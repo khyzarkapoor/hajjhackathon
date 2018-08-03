@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthService} from '../../services/auth.service';
 import {SebmGoogleMap,SebmGoogleMapPolygon,LatLngLiteral} from 'angular2-google-maps/core';
@@ -15,6 +14,8 @@ export class CrowdmanagementComponent implements OnInit {
   stop=0;scenter=0;sbottom=0;
   stopleft=0;scenterleft=0;sbottomleft=0;
   stopright=0;scenterright=0;sbottomright=0;
+
+  density=0;influx=0;outflux=0;speed=0;
   
   centers:Array<LatLngLiteral> = [
     { lat: 21.423190, lng: 39.827000 },
@@ -224,12 +225,24 @@ export class CrowdmanagementComponent implements OnInit {
         name:'redirected from '+location,
         icon:'http://tancro.e-central.tv/grandmaster/markers/google-icons/mapfiles-ms-micons/blue.png'
       });
+
+
       
     }
 
 
     this.verifypoints();
     console.log('Polyline',this.polylineArr);
+
+    // get additionalinfo
+    var totaldistance = 0;
+    this.polylineArr.forEach(element => {
+      totaldistance+=this.calculateDistance(element.newLat,element.oldlat,element.newLng,element.oldLng);
+    });
+    this.density = this.scenterleft/totaldistance;
+    this.density = Number(this.density.toFixed(2));
+    this.outflux = this.scenterleft;
+    this.speed = this.scenterleft*1.25/this.scenterleft;
     
   }
 
@@ -237,6 +250,7 @@ export class CrowdmanagementComponent implements OnInit {
     this.stopleft=0;this.stop=0;this.stopright=0;
     this.scenterleft=0;this.scenter=0;this.scenterright=0;
     this.sbottomleft=0;this.sbottom=0;this.sbottomright=0;
+    this.density=0;this.influx=0;this.outflux=0;this.speed=0;
     this.generateRandomLatLngs(21.422820,39.827539);
 
     let classifyPoint = require("robust-point-in-polygon");
