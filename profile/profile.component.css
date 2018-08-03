@@ -1,0 +1,26 @@
+
+#profileSection{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+    box-sizing: border-box;
+
+}
+
+.form-control{
+    font-size: small;
+}
+
+.btn{
+    font-size: small;
+    width:100%;
+}
+
+.btn-primary{
+    background-color: #1565C0;
+
+}
+
+.clearfix{
+    height:10px;
+}

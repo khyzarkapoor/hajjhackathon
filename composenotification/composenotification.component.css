@@ -1,0 +1,40 @@
+
+
+
+
+#registerSection{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+    box-sizing: border-box;
+}
+
+label{
+    font-size: small;
+    font-weight: 400;
+}
+
+.form-control{
+    font-size: small;
+}
+
+.btn{
+    font-size: small;
+}
+
+.btn-primary{
+    background-color: #1565C0;
+}
+
+.alternatecolor{
+    color:white;
+    background: #26C6DA;
+}
+
+.clearfix{
+    height:10px;
+}
+
+.msghelper{
+    color:palevioletred;
+}

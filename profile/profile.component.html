@@ -1,0 +1,45 @@
+
+<app-topbar></app-topbar>
+
+<br>
+<section id="profileSection">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div>
+                <div class="container">
+                        <div>
+                            <form (submit)="onProfileUpdate()">
+                                <div class="form-group text-center">
+                                    <span style="color:#1565C0"><i class="fas fa-user-circle fa-6x"></i></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullname">Full Name</label>
+                                    <input type="fullname" class="form-control" [(ngModel)]="fullname" name="fullname" id="fullname" aria-describedby="fullnameHelp" placeholder="Enter fullname" required>
+                                    <small id="fullnamhelp" class="form-text text-muted">This name will be used to address you in emails.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="number" class="form-control" id="phone" [(ngModel)]="phone" name="phone" aria-describedby="phoneHelp" placeholder="Enter Phone #" required>
+                                    <small id="phonehelp" class="form-text text-muted">We'll never share your personal phone with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" readonly required>
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Password</label>
+                                    <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" aria-describedby="passowrdHelp" placeholder="(unchanged password)">
+                                    <small id="passwordHelp" class="form-text text-muted">Be sure to choose an alphanumeric password for strength.</small>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                </div>
+                                
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

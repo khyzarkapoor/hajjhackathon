@@ -1,0 +1,73 @@
+
+#dashboardSection{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+}
+
+
+.menuitemscontainer{
+    /* display: inline-block; */
+}
+
+.menuitemwrapper{
+    cursor: pointer;
+    padding-bottom:5px;
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.menuitemwrapper:hover{
+    color:#1565C0;
+    border-left:2px solid #1565C0;
+    background: #1565c008;
+}
+
+.menuitemwrapper:focus{
+    box-sizing: border-box;
+    color:#1565C0;
+    border-left:2px solid #1565C0;
+    padding-left: 8px;
+    background: #1565c008;
+}
+
+.hoverselected{
+    box-sizing: border-box;
+    color:#1565C0;
+    border-left:2px solid #1565C0;
+    padding-left: 8px;
+    background: #1565c008;
+}
+
+.menuitem div{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: small;
+    color:#333;
+}
+
+.badgecontainer{
+    display: block;
+}
+
+.badge{
+    background: #1565C0;
+    color:white;
+}
+
+label{
+    font-weight: bold;
+    font-size: small;
+}
+
+th{
+    font-weight: 400;
+}
+
+.primary{
+    color:#1565C0;
+}
+
+.alternate{
+    color:#26C6DA;
+}

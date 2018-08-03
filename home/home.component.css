@@ -1,0 +1,40 @@
+
+#homeSection{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+    box-sizing: border-box;
+
+}
+
+#homeleft{
+    border-right:1px solid rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+}
+
+#homeleft img{
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.lead{
+    padding-top: 10px;
+    padding-right: 20px;
+    font-size: larger;
+}
+
+.col-md-8 h3{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.arrow{
+    color:#1565C0;
+    padding-right: 20px;
+}
+
+.margin{
+    height:10px;
+}

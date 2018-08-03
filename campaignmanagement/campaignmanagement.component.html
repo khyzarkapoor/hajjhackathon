@@ -1,0 +1,107 @@
+
+<section>
+  <div>
+
+  </div>
+
+
+  <p class="lead text-underline"><u> Create Campaign </u></p>
+  <form (submit)="registercampaign()">
+    <div class="row">
+      <div class="col-md-6">
+          <div class="form-group" >
+              <label for="name">Campaign File Upload</label>
+    
+              <!-- File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect -->
+              <input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+              <!-- button to trigger the file upload when submitted -->
+
+              <!-- <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                    Upload
+              </button> -->
+    
+              <small id="fullnamhelp" class="form-text text-muted">Please upload the contacts csv.</small>
+              <div class="row" *ngFor="let item of uploader.queue">
+                <div class="col-md-4">
+                  {{item.file.name}}
+                </div>
+                <div class="col-md-4">
+                  <div class="progress">
+                      <div class="progress-bar bg-success" [ngStyle]="{'width':item.progress+'%'}"></div>
+                  </div>
+                  
+                </div>
+                <div class="col-md-4 text-right">
+                  <input type="button" value="Upload" (click)="item.upload()" [disabled]="!uploader.getNotUploadedItems().length" class="btn btn-sm btn-link">
+                  <input type="button" value="Cancel" (click)="item.remove()" class="btn btn-sm btn-link">
+                </div>
+              </div>
+          </div>
+        <div class="form-group">
+            <label for="name">Campaign Name</label>
+            <input type="text" [(ngModel)]="name" name="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter Campaign Name" required>
+            <small id="fullnamhelp" class="form-text text-muted">This name is unique throughout this application.</small>
+        </div>
+        <div class="form-group">
+            <label for="name">Campaign Type</label>
+            <select class="form-control" [(ngModel)]="type" name="type" required (change)="typechange($event)">
+              <option value="" disabled selected>Select Type</option>
+              <option value="static">Static</option>
+              <option value="dynamic">Dynamic</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="desc">Desription</label>
+            <textarea name="description" [(ngModel)]="description" id="desc" cols="30" rows="4" class="form-control" required>Enter text here ..</textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+
+        <div class="form-group">
+            <label for="name">Campaign File Upload Path</label>
+            <input type="text" [(ngModel)]="path" name="path" class="form-control"  placeholder="Please select and upload the file first" required>
+            
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="form-group text-center">
+          <hr>
+          <input type="submit" value="Create Campaign" class="btn btn-primary btn-sm">
+          <hr>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</section>
+
+<section>
+  <p class="lead"><u>Previous Campaigns</u></p>
+  <div>
+    <div class="table-responsive">
+      <table class="table table-sm table-hover table-bordered">
+          <thead>
+              <tr class="table-info">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Desription</th>
+                <th>Type</th>
+                <th>File</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of campaignsArr">
+                  <td class="text-muted">{{item._id}}</td>
+                  <td class="text-muted">{{item.name}}</td>
+                  <td class="text-muted">{{item.description}}</td>
+                  <td class="text-muted">{{item.type}}</td>
+                  <td class="text-muted"><button class="btn btn-sm btn-link" (click)="download(item.path)">{{item.path}}</button></td>
+                  <td class="text-muted text-danger"><button class="btn btn-danger" (click)="removecampaign(item._id)"><span>Delete <i class="fa fa-times"></i></span></button></td>
+                </tr>
+              </tbody>
+      </table>
+    </div>
+  </div>
+</section>

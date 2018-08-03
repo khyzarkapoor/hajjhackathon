@@ -1,0 +1,42 @@
+
+<section id="quickSection">
+  <form (submit)="register()">
+      <p class="lead"><u>Create Campaign</u></p>
+  <div class="row">
+        
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label for="template">Select Group</label>
+                <select [(ngModel)]="group" name="group" id="group" (change)="groupchange($event)" class="form-control">
+                  <option value="" disabled selected>Select Group</option>
+                  <option *ngFor="let item of groupsArr" [value]="item._id">{{item.name}}</option>
+                </select>
+            </div>
+          <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" [(ngModel)]="name" id="name" class="form-control" placeholder="Enter name for this notifciation .." required>
+              <small class="text-muted">This name will be used to identify this campaign.</small>
+          </div>
+          
+          <div class="form-group">
+              <label for="msg">Message / SMS</label>
+              <textarea name="message" (input)="k($e)" [(ngModel)]="message" cols="30" rows="10" class="form-control"></textarea>
+              <small class="text-muted">Characters: <span class="msghelper">{{messagelen}}</span> </small>
+          </div>
+          <div class="form-group text-center">
+            <br>
+            <hr>
+              <input [disabled]="btndis" type="submit" value="Send Notification" class="btn btn-primary">&nbsp;
+              <span *ngIf="spinner"><i class="fa fa-spinner fa-spin"></i>&nbsp; Please wait ...</span>
+            <hr>
+          </div>
+
+        </div>
+        <div class="col-md-6 form-group">
+
+        </div>            
+
+  </div>
+</form>
+</section>

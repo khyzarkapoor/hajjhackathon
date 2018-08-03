@@ -1,0 +1,153 @@
+
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+
+<br>
+<section id="addressbooksection">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="menuitemscontainer">
+          <!-- compose -->
+          <div class="menuitemwrapper hoverselected" [routerLink]="['./contacts']"  routerLinkActive="hoverselected" >
+            <div class="menuitem">
+                <div>
+                  <span><i class="fa fa-clipboard"></i></span>
+                </div>
+                <div>
+                  Dashboard
+                </div>
+            </div>
+          </div>
+         
+      </div>
+    </div>
+    <div class="col-md-10" style="border-left:1px solid rgba(0,0,0,.1)">
+      <div class="row">
+          <div class="col-md-10">
+              <p class="lead"><u> Locations </u></p>
+              <table *ngIf="hideit" class="table table-sm table-condensed table-bordered table-hover">
+                  
+                  <thead>
+                    <tr class="table-info">
+                      <th>Name</th>
+                      <th>Capacity</th>
+                      <th>Load</th>
+                      <th>Officials</th>
+                      <th>Status</th>
+                      <th>Gates</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-muted">Location#1</td>
+                      <td class="text-muted">50,000</td>
+                      <td class="text-muted">~55,000</td>
+                      <td class="text-muted">1,000</td>
+                      <td class="text-muted">Over Utilized</td>
+                      <td class="text-muted">Closed</td>
+                      <td class="text-muted"><button class="btn btn-success btn-sm">Open Gates</button>&nbsp;<button class="btn btn-warning btn-sm">Re-Route</button></td>
+                    </tr>
+                    <tr>
+                      <td class="text-muted">Location#3</td>
+                      <td class="text-muted">50,000</td>
+                      <td class="text-muted">~15,000</td>
+                      <td class="text-muted">350</td>
+                      <td class="text-muted">Under Utilized</td>
+                      <td class="text-muted">Opened</td>
+                      <td class="text-muted"><button class="btn btn-danger btn-sm">Close Gates</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- bay areaaaa -->
+                <div *ngIf="spinner"><span><i class="fa fa-spinner fa-spin fa-3x"></i></span></div>
+                <div *ngIf="showmarker" style="height: 450px;">
+                    <sebm-google-map [latitude]="topright[3].lat" [longitude]="topright[3].lng" [zoom]="18" [disableDefaultUI]=false>
+                        <!-- center poly -->
+                        <sebm-map-polygon fillColor="#dc143c" [paths]="centers"     >
+                        </sebm-map-polygon>
+                        <!-- top poly -->
+                        <sebm-map-polygon [paths]="tops"     >
+                        </sebm-map-polygon>
+                        <!-- top left poly -->
+                        <sebm-map-polygon [paths]="topsleft"     >
+                          </sebm-map-polygon>
+                        <!-- top right -->
+                        <sebm-map-polygon [paths]="topright"     >
+                          </sebm-map-polygon>
+                        <!-- top right -->
+                        <sebm-map-polygon [paths]="centerright"     >
+                          </sebm-map-polygon>
+                          <sebm-map-polygon [paths]="centerleft"  fillColor="#ffa07a"    >
+                            </sebm-map-polygon>
+                        <!-- top right -->
+                        <sebm-map-polygon [paths]="bottom"     >
+                          </sebm-map-polygon>
+                        <!-- top right -->
+                        <sebm-map-polygon [paths]="bottomleft"     >
+                          </sebm-map-polygon>
+                          <sebm-map-polygon [paths]="bottomright"     >
+                            </sebm-map-polygon>
+
+                            <sebm-google-map-polyline strokeColor="#dc143c" *ngFor = "let item of polylineArr">
+                                      <sebm-google-map-polyline-point [latitude]="item.oldlat" [longitude]="item.oldLng">
+                                      </sebm-google-map-polyline-point>
+                                      <sebm-google-map-polyline-point [latitude]="item.newLat" [longitude]="item.newLng">
+                                      </sebm-google-map-polyline-point>
+                            </sebm-google-map-polyline>
+
+
+                        <sebm-google-map-marker [iconUrl]="m.icon"  *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng">
+                          <sebm-google-map-info-window>
+                            <strong>{{m.name}}</strong>
+                          </sebm-google-map-info-window>
+                        </sebm-google-map-marker>
+
+                        <sebm-google-map-marker [iconUrl]="m.icon" *ngFor="let m of othermarkers" [latitude]="m.lat" [longitude]="m.lng">
+                          <sebm-google-map-info-window>
+                            <strong>{{m.name}}</strong>
+                          </sebm-google-map-info-window>
+                        </sebm-google-map-marker>
+                      </sebm-google-map>
+                </div>
+
+
+
+
+          </div>
+          <div class="col-md-2">
+            
+            <div><input type="button" value="Load" (click)="load()" class="btn btn-primary btn-sm">&nbsp;<input type="button" value="Dispers" (click)="dispers()" class="btn btn-dark btn-sm"></div>
+
+            <div style="margin-top: 25px;">
+            <p><b><u>Updates</u></b></p>
+
+            <p><u>Top</u></p>
+            <div><small>Top-Left = {{stopleft}}/50</small></div>
+            <div><small>Top-Center = {{stop}}/50</small></div>
+            <div><small>Top-Right = {{stopright}}/50</small></div>
+            <br>
+
+
+            <p><u>Center</u></p>
+            <div><small>Center-Left = {{scenterleft}}/50</small></div>
+            <div><small>Center-Center = {{scenter}}/50</small></div>
+            <div><small>Center-Right = {{scenterright}}/50</small></div>
+            <br>
+
+            <p><u>Bottom</u></p>
+            <div><small>Bottom-Left = {{sbottomleft}}/50</small></div>
+            <div><small>Bottom-Center = {{sbottom}}/50</small></div>
+            <div><small>Bottom-Right = {{sbottomright}}/50</small></div>
+
+          </div>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+
+
+</section>

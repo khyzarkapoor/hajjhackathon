@@ -1,0 +1,23 @@
+
+section{
+    font-size: small;
+}
+
+th{
+    font-weight: 400;
+}
+
+.primary{
+    color:#1565C0;
+}
+
+.alternate{
+    color:#26C6DA;
+}
+
+.btn{
+    font-size: x-small;
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+}

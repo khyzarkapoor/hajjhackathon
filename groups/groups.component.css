@@ -1,0 +1,102 @@
+
+section{
+    font-size: small;
+}
+
+.form-control{
+    border-radius: 0px;
+    font-size: small;
+}
+
+.btn{
+    font-size: small;
+    border-radius: 0px;
+}
+
+.contactswrapper{
+    border-top:1px solid rgba(0,0,0,.1);
+    border-bottom:1px solid rgba(0,0,0,.1);
+    height: 250px;
+    overflow-y: auto;
+    padding: 7px;
+}
+
+.contact{
+    background:#f0f0f0;
+    display: inline-flex;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 5px;
+}
+
+.contact .checkbox{
+    margin-top: 3px;
+}
+
+.clearfix{
+    height: 20px;
+}
+
+.groupscontainer{
+    padding:5px;
+    height:500px;
+    display: inline-block;
+}
+
+.group{
+    color:#444;
+    width:250px;
+    height: 197px;
+    border:1px solid rgba(0, 0,0, 0.1);
+    box-sizing: border-box;
+    margin: 5px;
+    display: inline-block;
+}
+
+.top{
+    padding: 10px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+}
+
+.top i{
+    font-size: medium;
+}
+
+.top .action{
+    margin-top:3px;
+}
+
+.group .name{
+    font-size: medium;
+}
+
+.bottom{
+    height:150px;
+    font-size: small;
+    padding: 10px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+
+.bcon{
+    background: rgba(0, 0, 0, 0.1);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+.bottom .name{
+    font-size: small;
+}
+
+.bottom i{
+    font-size: small;
+}
+
+.bottom .action{
+    margin-top:0px;
+}

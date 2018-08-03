@@ -1,0 +1,17 @@
+
+#footerSection{
+    font-size:x-small;
+    background-color: #1565C0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    
+}
+
+p{
+    color:white;
+    margin: 0px;
+    padding-top:5px;
+    padding-bottom: 5px;
+}

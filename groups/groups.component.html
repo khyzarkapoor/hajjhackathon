@@ -1,0 +1,55 @@
+
+<section>
+  
+  <div class="row">
+    <div class="col-md-10">
+      <div class="groupscontainer">
+
+
+
+        <div class="group" *ngFor="let item of groupsArr">
+          <div class="top">
+            <span class="thumbnail">
+                <span><i class="fas fa-user-circle"></i></span>&nbsp;&nbsp;
+            </span>
+            <span class="name">
+                {{item.name}}
+            </span>
+            <span class="action float-right">
+                <span (click)="removegroup(item._id)"><i class="fa fa-times"></i></span>
+            </span>
+          </div>
+          <div class="bottom">
+
+            <div class="bcon" *ngFor="let contact of item.contacts ">
+                <span class="thumbnail">
+                    <span><i class="fas fa-user-circle"></i></span>&nbsp;&nbsp;
+                </span>
+                <span class="name">
+                    {{contact.name}}
+                    <!-- {{name}} -->
+                </span>
+                <span class="action float-right">
+                    <span (click)="removecontactfromgroup(contact.contact,item._id)"><i class="fa fa-times"></i></span>
+                </span>
+            </div>
+
+
+
+          </div>
+        </div>
+
+      
+      
+      </div>
+      
+
+
+    </div>
+    
+  </div>
+  <br>
+
+    
+  </section>
+  

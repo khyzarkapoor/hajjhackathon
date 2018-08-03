@@ -1,0 +1,63 @@
+
+#addressbooksection{
+    /* background: grey; */
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+
+}
+
+.form-control{
+    font-size: small;
+}
+
+.menuitemscontainer{
+    /* display: inline-block; */
+}
+
+.menuitemwrapper{
+    cursor: pointer;
+    padding-bottom:5px;
+    padding-left: 10px;
+}
+
+.menuitemwrapper:hover{
+    color:#1565C0;
+    border-left:2px solid #1565C0;
+    background: #1565c008;
+}
+
+.hoverselected{
+    box-sizing: border-box;
+    color:#1565C0;
+    border-left:2px solid #1565C0;
+    padding-left: 8px;
+    background: #1565c008;
+}
+
+.menuitem div{
+    display: inline-block;
+    margin-right: 10px;
+    font-size: small;
+    color:#333;
+}
+
+.badgecontainer{
+    display: block;
+}
+
+.badge{
+    background: #1565C0;
+    color:white;
+}
+
+.btn
+{
+    font-size: smaller;
+    padding:0px 5px 0px 5px;
+}
+
+
+.sebm-google-map-container{
+    height:100%;
+}

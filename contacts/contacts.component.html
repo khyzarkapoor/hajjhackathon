@@ -1,0 +1,80 @@
+
+<section>
+  <div class="row">
+    <div class="col-md-3 form-group">
+        <label>Search Contact</label>
+      <input type="text" [(ngModel)]="searchString" name="searchString" class="form-control" name="" id="" placeholder="Search Contact ...">
+    </div>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-md-10">
+        <small>Saved Contacts : {{contactsArr.length}}</small>
+        <div class="contactswrapper">
+
+
+            <div class="contact" *ngFor="let item of contactsArr | masksfilter : 'passport' : searchString;">
+              <div class="thumbnail">
+                <input type="checkbox" (change)="checkchange($event, item._id, item.fullname)" [value]="item._id">
+                <!-- <span><i class="fas fa-user-circle"></i></span>&nbsp;&nbsp; -->
+              </div>
+              <div class="name">
+                <div>{{item.fullname}}</div>
+                <div> ({{item.passport}})</div>
+              </div>
+              &nbsp;&nbsp;&nbsp;
+              <div class="checkbox">
+                <span (click)="deletecontact(item._id)"><i class="fa fa-times"></i></span>
+                
+              </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+  </div>
+
+    <div class="clearfix"></div>
+    <form (submit)="registergroup()">
+      <p class="lead"><u>Create New Group</u></p>
+      <div class="row">
+      <div class="col-md-3 form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" id="" placeholder="Enter Name ..." required>
+      </div>
+      <div class="col-md-3 form-group">
+        <label>Description</label>
+        <input type="text" class="form-control" [(ngModel)]="description" name="description" id="" placeholder="Short Description ..." required>
+      </div>
+      <div class="col-md-3 form-group">
+          <div><label style="visibility:hidden">Description</label></div>
+          <input type="submit" value="Create New Group" class="btn btn-primary">
+        </div>
+      
+    </div>
+  </form>
+
+
+  <hr>
+
+  <p class="lead"><u>Update Group</u></p>
+  <form (submit)="updategroup()">
+  <div class="row">
+    <div class="col-md-3">
+      <select class="form-control" (change)="groupschange($event)" [(ngModel)]="groups" name="groups" required>
+        <option value="" selected disabled>Select a value</option>
+        <option [value]="item._id" *ngFor="let item of allgroups">{{item.name}}</option>
+      </select>
+      <br>
+      <input type="submit" value="Update" class="btn btn-primary">
+    </div>
+  </div>
+</form>
+  
+</section>
+
+
+{{localcontact}}

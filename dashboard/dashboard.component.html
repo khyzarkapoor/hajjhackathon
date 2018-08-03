@@ -1,0 +1,203 @@
+
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+
+<br>
+<section id="dashboardSection">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="menuitemscontainer" style="visibility:hidden">
+
+          <div class="menuitemwrapper" tabindex="-1">
+            <div class="menuitem">
+                <div>
+                  <span><i class="fa fa-envelope"></i></span>
+                </div>
+                <div>
+                  Master
+                </div>
+            </div>
+          </div>
+
+          <div class="menuitemwrapper" tabindex="-1">
+            <div class="menuitem">
+                <div>
+                  <span><i class="fa fa-arrow-right"></i></span>
+                </div>
+                <div>
+                  Child 1
+                </div>
+            </div>
+          </div>
+
+          <div class="menuitemwrapper" tabindex="-1">
+            <div class="menuitem">
+                <div>
+                  <span><i class="fa fa-arrow-right"></i></span>
+                </div>
+                <div>
+                  Child 2
+                </div>
+            </div>
+          </div>
+
+          
+          
+      </div>
+    </div>
+    <div class="col-md-10" style="border-left:1px solid rgba(0,0,0,.1)">
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="form-group">
+            <select (change)="childchange($event)">
+              <option value="" disabled selected>Select Account</option>
+              <option value={{selfemail}} >Master ({{selfemail}})</option>
+              <option *ngFor="let item of childsArr" [value]="item.email">{{item.fullname}} ({{item.email}})</option>
+            </select><br>
+            <small class="text-muted">Select and get the information</small><br>
+            <label *ngIf="doughnutChartData.length==0"  class="text-danger">No information found.</label>
+          </div>
+
+
+
+
+
+
+
+
+        <div *ngIf="wanted">
+          <label>Account Transaction Volume</label>
+          <div style="display: block">
+            <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+
+      
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+            <div *ngIf="doughnutChartData.length>0" class="col-md-10 offset-md-1">
+                <div style="display: block">
+                    <canvas baseChart
+                                [data]="doughnutChartData"
+                                [labels]="doughnutChartLabels"
+                                [chartType]="doughnutChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)">
+                    </canvas>
+                  </div>
+            </div>
+        </div>
+      </div>
+
+      <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="row" *ngIf="wanted">
+        <div class="col-md-8">
+          <label>Schduling Tracker</label>
+          <table class="table table-sm table-condensed table-bordered table-hover">
+            <thead>
+              <tr class="table-info">
+                <th>Type</th>
+                <th>Content</th>
+                <th>Created</th>
+                <th>Sent</th>
+                <th>Outbox</th>
+                <th>Total</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Quick</td>
+                <td class="text-muted">Do as ...</td>
+                <td class="text-muted">2017/05/25 5:00:00</td>
+                <td class="text-muted">500</td>
+                <td class="text-muted">200</td>
+                <td class="text-muted">700</td>
+                <td class="text-muted">Pending</td>
+              </tr>
+              <tr>
+                <td>Drip/Bulk</td>
+                <td class="text-muted">Do as ...</td>
+                <td class="text-muted">2017/05/25 5:00:00</td>
+                <td class="text-muted">--</td>
+                <td class="text-muted">--</td>
+                <td class="text-muted">--</td>
+                <td class="text-muted">Scheduled (29/6/2018 6:00:00)</td>
+              </tr>
+              <tr>
+                <td>Bulk</td>
+                <td class="text-muted">Do as ...</td>
+                <td class="text-muted">2017/05/25 5:00:00</td>
+                <td class="text-muted">500</td>
+                <td class="text-muted">200</td>
+                <td class="text-muted">700</td>
+                <td class="text-muted">Completed</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-4">
+          <label>Credit Usage</label>
+          <table class="table table-sm table-condensed table-bordered table-hover">
+            <thead>
+              <tr class="table-info">
+                <th>&nbsp;</th>
+                <th>Sent</th>
+                <th>Recieved</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Yesterday</td>
+                <td class="text-muted">500</td>
+                <td class="text-muted">200</td>
+              </tr>
+              <tr>
+                <td>This Month</td>
+                <td class="text-muted">500</td>
+                <td class="text-muted">200</td>
+              </tr>
+              <tr>
+                <td>Previous Month</td>
+                <td class="text-muted">500</td>
+                <td class="text-muted">200</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

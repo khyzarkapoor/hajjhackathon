@@ -1,0 +1,83 @@
+
+<app-topbar></app-topbar>
+<app-navbar></app-navbar>
+
+<br>
+<section id="addressbooksection">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="menuitemscontainer">
+          <!-- compose -->
+          <div class="menuitemwrapper hoverselected" [routerLink]="['./contacts']"  routerLinkActive="hoverselected" >
+            <div class="menuitem">
+                <div>
+                  <span><i class="fa fa-pencil"></i></span>
+                </div>
+                <div>
+                  Create &amp; Manage
+                </div>
+            </div>
+          </div>
+ 
+          
+      </div>
+    </div>
+    <div class="col-md-10" style="border-left:1px solid rgba(0,0,0,.1)">
+      <div class="menuitemsviewscontainer">
+        <div class="row">
+            
+            <div class="col-md-6">
+                <p class="lead"><u>Register Tents</u></p>
+                <form (submit)="register()">
+                  <div class="form-group">
+                      <label for="fullname">Name</label>
+                      <input type="text" [(ngModel)]="name" name="name" class="form-control" aria-describedby="fullnameHelp" placeholder="Enter fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Occupancy</label>
+                        <input type="number" class="form-control" [(ngModel)]="occupancy" name="occupancy" aria-describedby="phoneHelp" placeholder="Enter Occupancy" required>
+                      </div>
+                    <div class="form-group">
+                      <input type="submit" value="Create" class="btn btn-primary btn-sm">
+                    </div>
+                    </form>
+            </div>
+        </div>  
+        
+
+
+      </div>
+
+      <br>
+      <div class="row">
+          <div class="col-md-10">
+              <p class="lead"><u> Registered Tents </u></p>
+              <table class="table table-sm table-condensed table-bordered table-hover">
+                  
+                  <thead>
+                    <tr class="table-info">
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Limit</th>
+                      <th>Status</th>
+                      <th>Occupants</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of tentsArr ">
+                      <td class="text-muted">{{item._id}}</td>
+                      <td class="text-muted">{{item.name}}</td>
+                      <td class="text-muted">{{item.occupancy}}</td>
+                      <td class="text-muted">{{item.status}}</td>
+                      <td class="text-muted">{{item.occupants.length}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+
+
+</section>
